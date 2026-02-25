@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immobili Esclusivi | Portfolio</title>
     <meta name="description" content="Portfolio personale di immobili in vendita. Scopri case e negozi esclusivi.">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <!-- Topbar -->
@@ -59,7 +63,8 @@
         <div class="container hero-content">
             <span class="hero-subtitle">Collezione Personale</span>
             <h1 class="hero-title">Immobili d'Eccellenza a <em>Venezia</em></h1>
-            <p class="hero-description">Scopri proprietà uniche, selezionate per offrire stile, comfort e posizioni strategiche tra mare e centro storico.</p>
+            <p class="hero-description">Scopri proprietà uniche, selezionate per offrire stile, comfort e posizioni
+                strategiche tra mare e centro storico.</p>
             <a href="#properties" class="btn btn-primary">Esplora le Proprietà</a>
         </div>
     </section>
@@ -71,13 +76,12 @@
                 <h2 class="section-title">Le Mie Proprietà</h2>
                 <div class="title-divider"></div>
             </div>
-            
+
             <div class="properties-grid">
                 <!-- Property Card 1: Ca Savio -->
                 <article class="property-card fade-in">
                     <div class="property-image">
-                        <!-- Placeholder per immagine casa Ca Savio -->
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casa a Cà Savio, Venezia">
+                        <img src="img/fronte1.png" alt="Casa a Cà Savio, Venezia">
                         <div class="property-status">In Vendita</div>
                     </div>
                     <div class="property-details">
@@ -85,8 +89,9 @@
                             <i class="fa-solid fa-location-dot"></i> Cà Savio, Venezia
                         </div>
                         <h3 class="property-title">Elegante Casa Indipendente</h3>
-                        <p class="property-excerpt">Splendida proprietà situata a Cà Savio, perfetta per chi cerca la tranquillità a due passi dal mare e dalla laguna di Venezia.</p>
-                        
+                        <p class="property-excerpt">Splendida proprietà situata a Cà Savio, perfetta per chi cerca la
+                            tranquillità a due passi dal mare e dalla laguna di Venezia.</p>
+
                         <div class="property-features">
                             <div class="feature"><i class="fa-solid fa-bed"></i> 3 Camere</div>
                             <div class="feature"><i class="fa-solid fa-bath"></i> 2 Bagni</div>
@@ -94,12 +99,32 @@
                         </div>
                         <div class="property-footer">
                             <div class="property-price">Trattativa Riservata</div>
-                            <button class="btn btn-outline btn-sm">Dettagli</button>
+                            <a href="dettaglio-casavio.html" class="btn btn-outline btn-sm">Dettagli</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Future Property Placeholder -->
+                <!-- Future Property Placeholder: Casa Centro Storico -->
+                <article class="property-card placeholder-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="property-image placeholder-image">
+                        <i class="fa-solid fa-house-chimney"></i>
+                        <div class="property-status status-coming">Prossimamente</div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-location">
+                            <i class="fa-solid fa-location-dot"></i> Centro Storico, Venezia
+                        </div>
+                        <h3 class="property-title">Appartamento Tipico</h3>
+                        <p class="property-excerpt">In arrivo: una caratteristica casa veneziana situata nel cuore
+                            pulsante del centro storico.</p>
+                        <div class="property-footer">
+                            <div class="property-price">Da Definire</div>
+                            <a href="dettaglio-venezia.html" class="btn btn-outline btn-sm">Dettagli</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Future Property Placeholder: Negozio -->
                 <article class="property-card placeholder-card fade-in" style="animation-delay: 0.2s;">
                     <div class="property-image placeholder-image">
                         <i class="fa-solid fa-shop"></i>
@@ -110,7 +135,12 @@
                             <i class="fa-solid fa-location-dot"></i> Centro Storico, Venezia
                         </div>
                         <h3 class="property-title">Spazio Commerciale</h3>
-                        <p class="property-excerpt">In arrivo: un esclusivo negozio situato nel cuore di Venezia, ideale per attività commerciali di prestigio.</p>
+                        <p class="property-excerpt">In arrivo: un esclusivo negozio situato nel cuore di Venezia, ideale
+                            per attività commerciali di prestigio.</p>
+                        <div class="property-footer">
+                            <div class="property-price">Da Definire</div>
+                            <a href="dettaglio-negozio.html" class="btn btn-outline btn-sm">Dettagli</a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -126,7 +156,7 @@
             </div>
             <div class="footer-contact">
                 <h4>Contatti</h4>
-                <a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i> info@esempio.it</a>
+                <a href="mailto:tiume00@gmail.com"><i class="fa-solid fa-envelope"></i> tiume00@gmail.com</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -137,4 +167,5 @@
     <!-- Custom Script -->
     <script src="js/script.js"></script>
 </body>
+
 </html>

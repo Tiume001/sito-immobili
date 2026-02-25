@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Proprietà | Spazio Commerciale</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Extra styles specific to detail page */
+        .property-hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            background-color: var(--bg-secondary);
+            /* Sfondo placeholder negozio */
+            background-image: url('https://images.unsplash.com/photo-1555529771-835f59bfc50c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            margin-top: var(--nav-height);
+        }
+
+        .property-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .property-hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 24px;
+            color: #fff;
+        }
+
+        .property-hero-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .detail-section {
+            padding: 80px 0;
+            background-color: var(--bg-primary);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .detail-content {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-content h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--accent-color);
+        }
+
+        .detail-content p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .sidebar-card {
+            background-color: var(--bg-card);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .feature-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .feature-list li i {
+            color: var(--accent-color);
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            height: 150px;
+            cursor: pointer;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item i {
+            font-size: 3rem;
+            color: var(--border-color);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar scrolled">
+        <div class="container topbar-content">
+            <div class="logo">
+                <a href="index.html">Real<span>Estate</span></a>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#properties" class="nav-link">Immobili</a>
+                <a href="index.html#contact" class="nav-link">Contatti</a>
+            </nav>
+            <div class="topbar-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+                    <i class="fa-solid fa-moon dark-icon"></i>
+                    <i class="fa-solid fa-sun light-icon"></i>
+                </button>
+                <div class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-nav-overlay">
+        <nav class="mobile-nav-menu">
+            <a href="index.html#home" class="mobile-nav-link">Home</a>
+            <a href="index.html#properties" class="mobile-nav-link">Immobili</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contatti</a>
+        </nav>
+    </div>
+
+    <!-- Hero Image -->
+    <header class="property-hero fade-in">
+        <div class="property-hero-overlay"></div>
+        <div class="container property-hero-content">
+            <a href="index.html#properties" class="back-link"><i class="fa-solid fa-arrow-left"></i> Torna agli
+                immobili</a>
+            <h1 class="property-hero-title">Spazio Commerciale</h1>
+            <p><i class="fa-solid fa-location-dot"></i> Centro Storico, Venezia</p>
+        </div>
+    </header>
+
+    <!-- Detail Content -->
+    <section class="detail-section">
+        <div class="container detail-grid">
+
+            <!-- Descrizione -->
+            <div class="detail-content fade-in" style="animation-delay: 0.1s;">
+                <h2>Descrizione della Proprietà</h2>
+                <p>In arrivo: un esclusivo negozio situato nel cuore di Venezia, ideale per attività commerciali di
+                    prestigio.
+                    Dalla location privilegiata alla grande visibilità, questo immobile rappresenta un investimento su
+                    misura per boutique o gallerie d'arte.</p>
+
+                <p>La scheda tecnica completa, le planimetrie e le fotografie degli interni saranno pubblicate al
+                    termine delle valutazioni.</p>
+
+                <div class="secondary-details-card">
+                    <h3><i class="fa-solid fa-map-location-dot"
+                            style="color: var(--accent-color); margin-right: 8px;"></i> Zona Commerciale & Logistica
+                    </h3>
+                    <div class="secondary-details-grid">
+                        <div class="secondary-detail-item">
+                            <strong>Posizione</strong>
+                            Centro Storico, Venezia
+                        </div>
+                        <div class="secondary-detail-item">
+                            <strong>Traffico Pedonale</strong>
+                            Elevato (ideale per retail/negozi)
+                        </div>
+                        <div class="secondary-detail-item">
+                            <strong>Carico/Scarico</strong>
+                            Accesso al Canale vicino
+                        </div>
+                        <div class="secondary-detail-item">
+                            <strong>Disponibilità</strong>
+                            Da definire
+                        </div>
+                    </div>
+                </div>
+
+                <h3
+                    style="margin-top: 40px; margin-bottom: 20px; color: var(--text-primary); font-family: var(--font-serif); font-size: 1.75rem;">
+                    Galleria Prossimamente</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><i class="fa-solid fa-shop"></i></div>
+                    <div class="gallery-item"><i class="fa-solid fa-shop"></i></div>
+                    <div class="gallery-item"><i class="fa-solid fa-shop"></i></div>
+                    <div class="gallery-item"><i class="fa-solid fa-shop"></i></div>
+                </div>
+            </div>
+
+            <!-- Dati / Sidebar -->
+            <div class="sidebar-card fade-in" style="animation-delay: 0.2s;">
+                <h3>Status: Prossimamente</h3>
+                <ul class="feature-list">
+                    <li><span><i class="fa-solid fa-ruler-combined"></i> Superficie</span> <strong>Da definire</strong>
+                    </li>
+                    <li><span><i class="fa-solid fa-store"></i> Vetrine</span> <strong>Da definire</strong></li>
+                    <li><span><i class="fa-solid fa-door-open"></i> Ingressi</span> <strong>Da definire</strong></li>
+                    <li><span><i class="fa-solid fa-fire-burner"></i> Canna Fumaria</span> <strong>Da
+                            verificare</strong>
+                    </li>
+                </ul>
+                <div class="contact-actions">
+                    <a href="https://wa.me/393400080030" class="btn btn-outline btn-whatsapp" target="_blank"><i
+                            class="fa-brands fa-whatsapp"></i> Chiedi Info WhatsApp</a>
+                    <a href="https://t.me/+393400080030" class="btn btn-outline btn-telegram" target="_blank"><i
+                            class="fa-brands fa-telegram"></i> Telegram</a>
+                    <a href="tel:+393400080030" class="btn btn-outline btn-call"><i class="fa-solid fa-phone"></i> Fissa
+                        Teleconferenza</a>
+                    <a href="mailto:tiume00@gmail.com" class="btn btn-primary btn-email"><i
+                            class="fa-solid fa-envelope"></i> Scrivi Business Email</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo">Real<span>Estate</span></div>
+                <p>Portfolio personale di immobili in vendita.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contatti</h4>
+                <a href="mailto:tiume00@gmail.com"><i class="fa-solid fa-envelope"></i> tiume00@gmail.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portfolio Immobili. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

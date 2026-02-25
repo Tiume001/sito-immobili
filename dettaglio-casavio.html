@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Proprietà | Cà Savio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Extra styles specific to detail page */
+        .property-hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            background-image: url('img/fronte1.png');
+            background-size: cover;
+            background-position: center;
+            margin-top: var(--nav-height);
+        }
+
+        .property-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .property-hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 24px;
+            color: #fff;
+        }
+
+        .property-hero-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .detail-section {
+            padding: 80px 0;
+            background-color: var(--bg-primary);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .detail-content {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-content h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--accent-color);
+        }
+
+        .detail-content p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .sidebar-card {
+            background-color: var(--bg-card);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .feature-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .feature-list li i {
+            color: var(--accent-color);
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            height: 150px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar scrolled">
+        <div class="container topbar-content">
+            <div class="logo">
+                <a href="index.html">Real<span>Estate</span></a>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#properties" class="nav-link">Immobili</a>
+                <a href="index.html#contact" class="nav-link">Contatti</a>
+            </nav>
+            <div class="topbar-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+                    <i class="fa-solid fa-moon dark-icon"></i>
+                    <i class="fa-solid fa-sun light-icon"></i>
+                </button>
+                <div class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-nav-overlay">
+        <nav class="mobile-nav-menu">
+            <a href="index.html#home" class="mobile-nav-link">Home</a>
+            <a href="index.html#properties" class="mobile-nav-link">Immobili</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contatti</a>
+        </nav>
+    </div>
+
+    <!-- Hero Image -->
+    <header class="property-hero fade-in">
+        <div class="property-hero-overlay"></div>
+        <div class="container property-hero-content">
+            <a href="index.html#properties" class="back-link"><i class="fa-solid fa-arrow-left"></i> Torna agli
+                immobili</a>
+            <h1 class="property-hero-title">Elegante Casa Indipendente</h1>
+            <p><i class="fa-solid fa-location-dot"></i> Cà Savio, Venezia</p>
+        </div>
+    </header>
+
+    <!-- Detail Content -->
+    <section class="detail-section">
+        <div class="container detail-grid">
+
+            <!-- Descrizione -->
+            <div class="detail-content fade-in" style="animation-delay: 0.1s;">
+                <h2>Descrizione della Proprietà</h2>
+                <p>Splendida proprietà situata a Cà Savio, l'incantevole località marittima del litorale di
+                    Cavallino-Treporti. La soluzione ideale per chi cerca la tranquillità di una zona residenziale a due
+                    passi dalla spiaggia e dai comodi collegamenti per la laguna e la magica Venezia.</p>
+
+                <p>La casa è curata in ogni minimo dettaglio, con pavimenti di alta qualità, infissi a taglio termico
+                    moderni, e un ampio giardino perfetto per rilassarsi o organizzare cene estive. Gli ambienti ampi e
+                    luminosi creano un'atmosfera calda e accogliente fin dal primo ingresso.</p>
+
+                <div class="secondary-details-card">
+                    <h3><i class="fa-solid fa-map-location-dot"
+                            style="color: var(--accent-color); margin-right: 8px;"></i> Posizione & Info Aggiuntive</h3>
+                    <div class="secondary-details-grid">
+                        <div class="secondary-detail-item">
+                            <strong>Posizione <a href="https://maps.app.goo.gl/63RH3KwUcWSdQnFp7" target="_blank"
+                                    style="font-size:0.75rem; margin-left:6px; text-transform:none; letter-spacing:0;"><i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i> Apri Mappa</a></strong>
+                            Cà Savio, Cavallino-Treporti (VE)
+                        </div>
+                        <div class="secondary-detail-item">
+                            <strong>Distanza dal Mare</strong>
+                            10 minuti a piedi
+                        </div>
+                        <div class="secondary-detail-item">
+                            <strong>Servizi Limitrofi</strong>
+                            Supermercato, Farmacia, Autobus per Punta Sabbioni
+                        </div>
+                        <div class="secondary-detail-item">
+                            <strong>Stato Immobile</strong>
+                            Ristrutturato di recente (2020)
+                        </div>
+                    </div>
+                </div>
+
+                <h3
+                    style="margin-top: 40px; margin-bottom: 20px; color: var(--text-primary); font-family: var(--font-serif); font-size: 1.75rem;">
+                    Galleria</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="img/fronte2.png" alt="Fronte 2"></div>
+                    <div class="gallery-item"><img src="img/fronte3.png" alt="Fronte 3"></div>
+                    <div class="gallery-item"><img src="img/back1.png" alt="Retro 1"></div>
+                    <div class="gallery-item"><img src="img/back2.png" alt="Retro 2"></div>
+                </div>
+            </div>
+
+            <!-- Dati / Sidebar -->
+            <div class="sidebar-card fade-in" style="animation-delay: 0.2s;">
+                <h3>Dettagli Principali</h3>
+                <ul class="feature-list">
+                    <li><span><i class="fa-solid fa-house"></i> Tipologia</span> <strong>Casa Indip.</strong></li>
+                    <li><span><i class="fa-solid fa-key"></i> Tipo</span> <strong>Secondaria</strong></li>
+                    <li><span><i class="fa-solid fa-ruler-combined"></i> Superficie</span> <strong>120 mq</strong></li>
+                    <li><span><i class="fa-solid fa-bed"></i> Letti</span> <strong style="text-align: right;">6 (2
+                            Matr., 2 Sing.)</strong></li>
+                    <li><span><i class="fa-solid fa-bath"></i> Bagni</span> <strong>2</strong></li>
+                    <li><span><i class="fa-solid fa-star"></i> Comforts</span> <strong
+                            style="display: flex; gap: 8px; justify-content: flex-end;">
+                            <i class="fa-solid fa-wifi" style="margin: 0; width: auto;" title="Wi-Fi"></i>
+                            <i class="fa-solid fa-snowflake" style="margin: 0; width: auto;"
+                                title="Aria Condizionata"></i>
+                            <i class="fa-solid fa-tv" style="margin: 0; width: auto;" title="TV"></i>
+                        </strong></li>
+                    <li><span><i class="fa-solid fa-paw"></i> Animali</span> <strong>Ammessi</strong></li>
+                    <li><span><i class="fa-solid fa-smoking"></i> Fumatori</span> <strong>Non Ammessi</strong></li>
+                    <li><span><i class="fa-solid fa-sun-plant-wilt"></i> Classe Energetica</span> <strong>A+</strong>
+                    </li>
+                </ul>
+                <div class="contact-actions">
+                    <a href="https://wa.me/393400080030" class="btn btn-outline btn-whatsapp" target="_blank"><i
+                            class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://t.me/+393400080030" class="btn btn-outline btn-telegram" target="_blank"><i
+                            class="fa-brands fa-telegram"></i> Telegram</a>
+                    <a href="tel:+393400080030" class="btn btn-outline btn-call"><i class="fa-solid fa-phone"></i>
+                        Chiama</a>
+                    <a href="mailto:tiume00@gmail.com" class="btn btn-primary btn-email"><i
+                            class="fa-solid fa-envelope"></i> Scrivi Email</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo">Real<span>Estate</span></div>
+                <p>Portfolio personale di immobili in vendita.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contatti</h4>
+                <a href="mailto:info@esempio.it"><i class="fa-solid fa-envelope"></i> info@esempio.it</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Portfolio Immobili. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
